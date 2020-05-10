@@ -194,6 +194,9 @@ endfunction
 function s:syntax_context(lnum)
   let start_col = s:start_col(a:lnum)
   let syntax_stack = s:syntax_stack_at(a:lnum, start_col)
+  if len(syntax_stack) == 0
+    return ''
+  endif
   let start_syntax = syntax_stack[-1]
   let reversed = reverse(syntax_stack)
   let i = 0
